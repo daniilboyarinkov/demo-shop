@@ -1,0 +1,7 @@
+export { AboutUsPage } from "./AboutUsPage"
+export { HomePage } from "./HomePage"
+export { FavoritePage } from "./FavoritePage"
+export { CartPage } from "./CartPage"
+export { CatalogPage } from "./CatalogPage"
+export { ProductPage } from "./ProductPage"
+export { ErrorPage } from "./ErrorPage"

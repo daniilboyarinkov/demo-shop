@@ -1,10 +1,16 @@
-import React from "react";
+import React from "react"
+
+import { HomePage } from "./pages/HomePage"
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-    </div>
-  );
+    <>
+      {"Header "}
+      <HomePage />
+      AboutUsPage FavoritePage CartPage CatalogPage ProductPage
+      {"Footer "}
+    </>
+  )
 }
 
-export default App;
+export default App

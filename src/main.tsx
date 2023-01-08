@@ -1,21 +1,72 @@
-import React from "react";
-import "./index.css";
-import App from "./App";
-import { store } from "./app/store";
-import { Provider } from "react-redux";
+import React from "react"
 
-import { createRoot } from "react-dom/client";
+import "./index.css"
+import { createRoot } from "react-dom/client"
+import { Provider } from "react-redux"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
-const container = document.getElementById("root");
+// import App from "./App"
+import { store } from "./app/store"
+import { EndPoints } from "./const/endpoints"
+import {
+  AboutUsPage,
+  CartPage,
+  CatalogPage,
+  ErrorPage,
+  FavoritePage,
+  HomePage,
+  ProductPage,
+} from "./pages"
+import { loader as catalogLoader } from "./pages/CatalogPage"
+import { loader as rootLoader } from "./pages/HomePage"
+import { loader as productLoader } from "./pages/ProductPage"
 
-if (!container) throw new Error("Could not find root element with id 'root'");
+const container = document.getElementById("root")
 
-const root = createRoot(container);
+if (!container) throw new Error("Could not find root element with id 'root'")
+
+const root = createRoot(container)
+
+const router = createBrowserRouter([
+  {
+    path: EndPoints.Root,
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+    loader: rootLoader,
+  },
+  {
+    path: EndPoints.About,
+    element: <AboutUsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: EndPoints.Cart,
+    element: <CartPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: EndPoints.Catalog,
+    element: <CatalogPage />,
+    errorElement: <ErrorPage />,
+    loader: catalogLoader,
+  },
+  {
+    path: EndPoints.Favorites,
+    element: <FavoritePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: EndPoints.Product,
+    element: <ProductPage />,
+    errorElement: <ErrorPage />,
+    loader: productLoader,
+  },
+])
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
-);
+)
