@@ -2,15 +2,26 @@ import React from "react"
 
 import { NavLink } from "react-router-dom"
 
+import { useAppDispatch, useAppSelector } from "../app/hooks"
 import { ShopData } from "../const/data-shop"
 import { EndPoints } from "../const/endpoints"
+import { set } from "../features/themeSlice"
 import CartSVG from "../svg/cartSVG"
 import HeartSVG from "../svg/heartSVG"
 import LogoTempSVG from "../svg/LogoTempSVG"
+import { ThemeToggleButtonSVG } from "../svg/ThemeToggleButtonSVG"
 
 // export interface IHeaderProps {}
 
 export default function Header() {
+  const theme = useAppSelector((state) => state.theme)
+  const dispatch = useAppDispatch()
+
+  const handleThemeChange = () => {
+    const next = theme === "dark" ? "light" : "dark"
+    dispatch(set(next))
+  }
+
   return (
     <header className="navbar bg-base-200">
       <div className="flex-1">
@@ -52,6 +63,13 @@ export default function Header() {
             </div>
           </div>
         </div>
+
+        <button
+          className="btn btn-ghost btn-circle"
+          onClick={handleThemeChange}
+        >
+          <ThemeToggleButtonSVG theme={theme} />
+        </button>
       </div>
     </header>
   )
