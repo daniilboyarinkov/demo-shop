@@ -2,9 +2,13 @@ import React from "react"
 
 import { ProductCard } from "./ProductCard"
 
-// export interface IProductSpaceProps {}
+import { Product } from "../features/products/productsApi"
 
-export function ProductSpace() {
+export interface IProductSpaceProps {
+  products?: Product[]
+}
+
+export function ProductSpace({ products }: IProductSpaceProps) {
   return (
     <div
       className="p-4 pt-2 grid gap-10"
@@ -12,12 +16,9 @@ export function ProductSpace() {
         gridTemplateColumns: "repeat(auto-fit, minmax(385px, 1fr))",
       }}
     >
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      {products?.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   )
 }
