@@ -1,0 +1,7 @@
+export { Footer } from "./Footer"
+export { Header } from "./Header"
+export { HeroMain } from "./HeroMain"
+export { Subscribe } from "./Subscribe"
+export { CategoriesMenu } from "./CategoriesMenu"
+export { Filters } from "./Filters"
+export { ProductSpace } from "./ProductSpace"

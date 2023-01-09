@@ -1,5 +1,11 @@
 import React from "react"
 
+import { HeroMain, Subscribe } from "../components"
+
 export function HomePage() {
-  return <div>Hero Categories Subscribe</div>
+  return (
+    <div>
+      <HeroMain /> Categories <Subscribe />
+    </div>
+  )
 }

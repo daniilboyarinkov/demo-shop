@@ -4,7 +4,37 @@ export const ShopData = {
   slogan: "Super duper best shop",
 }
 
-export const ShopContacts = {
+export const ShopCategories = [
+  {
+    id: 1,
+    title: "electronics",
+  },
+  {
+    id: 2,
+    title: "jewelery",
+  },
+  {
+    id: 3,
+    title: "men's clothing",
+  },
+  {
+    id: 4,
+    title: "women's clothing",
+  },
+]
+
+export const ShopSortFilters = [
+  {
+    id: 1,
+    title: "новизна",
+  },
+  {
+    id: 2,
+    title: "цена",
+  },
+]
+
+export const ShopContacts: ShopContactsType = {
   mails: [],
   phones: [],
   addresses: [],
@@ -25,6 +55,19 @@ export const ShopContacts = {
       url: "https://www.twitter.com/superduperbestshop",
     },
   ],
+}
+
+export interface SocialContactType {
+  id: number
+  name: string
+  url: string
+}
+
+export interface ShopContactsType {
+  mails: string[]
+  phones: string[]
+  addresses: string[]
+  socials: SocialContactType[]
 }
 
 export const FooterLinks: FooterLinksType = {

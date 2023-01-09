@@ -13,7 +13,7 @@ import { ThemeToggleButtonSVG } from "../svg/ThemeToggleButtonSVG"
 
 // export interface IHeaderProps {}
 
-export default function Header() {
+export function Header() {
   const theme = useAppSelector((state) => state.theme)
   const dispatch = useAppDispatch()
 
@@ -23,7 +23,7 @@ export default function Header() {
   }
 
   return (
-    <header className="navbar bg-base-200">
+    <header className="navbar bg-base-200 z-10">
       <div className="flex-1">
         <NavLink className="btn btn-ghost normal-case text-xl" to="/">
           <LogoTempSVG />

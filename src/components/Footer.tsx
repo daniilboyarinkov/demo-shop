@@ -6,7 +6,7 @@ import { ServiceContact } from "../svg/ServiceContactSVG"
 
 // type Props = {}
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div>
       <footer className="footer p-10 bg-base-200 text-base-content">
@@ -43,5 +43,3 @@ const Footer = () => {
     </div>
   )
 }
-
-export default Footer
