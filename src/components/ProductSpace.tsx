@@ -11,9 +11,9 @@ export interface IProductSpaceProps {
 export function ProductSpace({ products }: IProductSpaceProps) {
   return (
     <div
-      className="p-4 pt-2 grid gap-10"
+      className="md:p-4 pt-2 grid gap-10"
       style={{
-        gridTemplateColumns: "repeat(auto-fit, minmax(385px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
       }}
     >
       {products?.map((product) => (

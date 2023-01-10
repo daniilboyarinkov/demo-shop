@@ -1,32 +1,26 @@
 import React from "react"
 
-import { CategoriesMenu, Filters, ProductSpace } from "../components"
+import { Filters, ProductSpace } from "../components"
 import { useGetAllProductsQuery } from "../features/products/productsApi"
 
 export function CatalogPage() {
   const { data, error, isLoading } = useGetAllProductsQuery("")
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading)
+    return (
+      <div className="grid place-content-center w-full h-full">
+        <progress className="progress w-56"></progress>
+      </div>
+    )
+
+  // that actually does not work because router does just magic
   if (error) return <div>Error...</div>
 
   return (
-    <div
-      className="grid"
-      style={{
-        gridTemplateColumns: "auto 1fr auto",
-      }}
-    >
-      <CategoriesMenu />
-      <div
-        className="grid mt-1"
-        style={{
-          gridTemplateRows: "auto 1fr",
-        }}
-      >
-        <Filters />
-        <ProductSpace products={data} />
-        Pagination
-      </div>
-    </div>
+    <>
+      <Filters />
+      <ProductSpace products={data} />
+      Pagination
+    </>
   )
 }

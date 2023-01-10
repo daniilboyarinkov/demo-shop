@@ -13,7 +13,7 @@ export interface IProductCard {
 export function ProductCard({ product }: IProductCard) {
   return (
     <div
-      className="card card-compact w-96 bg-base-100 shadow-xl grid"
+      className="card card-compact bg-base-100 shadow-xl grid"
       style={{
         gridTemplateRows: "auto 1fr auto",
       }}
@@ -24,7 +24,7 @@ export function ProductCard({ product }: IProductCard) {
           <img
             src={product.image}
             alt="Shoes"
-            className="h-[480px] w-full object-cover"
+            className="h-[320px] w-full object-cover rounded"
           />
         </figure>
       </NavLink>

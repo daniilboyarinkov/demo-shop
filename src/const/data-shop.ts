@@ -6,6 +6,11 @@ export const ShopData = {
 
 export const ShopCategories = [
   {
+    id: 0,
+    title: "Все категории",
+    image: "",
+  },
+  {
     id: 1,
     title: "electronics",
     image:
