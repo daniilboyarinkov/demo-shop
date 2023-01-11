@@ -2,16 +2,16 @@ import React from "react"
 
 import { ProductCard } from "./ProductCard"
 
-import { Product } from "../features/products/productsApi"
+import { IProduct } from "../features/products/productsApi"
 
 export interface IProductSpaceProps {
-  products?: Product[]
+  products?: IProduct[]
 }
 
 export function ProductSpace({ products }: IProductSpaceProps) {
   return (
     <div
-      className="md:p-4 pt-2 grid gap-10"
+      className="pt-2 grid gap-10 md:px-10"
       style={{
         gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
       }}

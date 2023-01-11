@@ -72,9 +72,7 @@ const JSXrouter = createBrowserRouter(
 )
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={JSXrouter} />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={JSXrouter} />
+  </Provider>
 )

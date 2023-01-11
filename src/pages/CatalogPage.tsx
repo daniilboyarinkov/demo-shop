@@ -1,10 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 
-import { Filters, ProductSpace } from "../components"
-import { useGetAllProductsQuery } from "../features/products/productsApi"
+import { Filters, ProductSpace, Pagination } from "../components"
+import { useGetPaginationProductsQuery } from "../features/products/productsApi"
+
+const itemsPerPage = 12
 
 export function CatalogPage() {
-  const { data, error, isLoading } = useGetAllProductsQuery("")
+  const [page, setPage] = useState(1)
+
+  const { data, error, isLoading } = useGetPaginationProductsQuery({
+    offset: itemsPerPage * page,
+    limit: itemsPerPage,
+  })
+
+  const handlePageClick = (num: number) => {
+    setPage(num)
+  }
 
   if (isLoading)
     return (
@@ -20,7 +31,13 @@ export function CatalogPage() {
     <>
       <Filters />
       <ProductSpace products={data} />
-      Pagination
+      <Pagination
+        onPageChange={handlePageClick}
+        totalCount={200}
+        currentPage={page}
+        pageSize={itemsPerPage}
+        siblingCount={1}
+      />
     </>
   )
 }
