@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom"
 import { IProduct } from "../features/products/productsApi"
 // import CartSVG from "../svg/cartSVG"
 import HeartSVG from "../svg/heartSVG"
+import { ConvertCurrency } from "../utils/ConvertCurrency"
 
 export interface IProductCard {
   product: IProduct
@@ -31,9 +32,7 @@ export function ProductCard({ product }: IProductCard) {
       <div className="card-body">
         <div className="flex items-center justify-between">
           <h2 className="card-title max-w-[210px]">{product.title}</h2>
-          <b className="self-start">
-            {product.price} <span>₽</span>
-          </b>
+          <b className="self-start">{ConvertCurrency(product.price)}</b>
         </div>
 
         {/* уведомление о товарах новой коллекции. */}

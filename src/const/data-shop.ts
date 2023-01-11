@@ -4,38 +4,6 @@ export const ShopData = {
   slogan: "Super duper best shop",
 }
 
-export const ShopCategories = [
-  {
-    id: 0,
-    title: "Все категории",
-    image: "",
-  },
-  {
-    id: 1,
-    title: "electronics",
-    image:
-      "https://www.techinpost.com/wp-content/uploads/How-do-Analog-Digital-Circuits-Shape-the-Electronics-Industry.jpg",
-  },
-  {
-    id: 2,
-    title: "jewelery",
-    image:
-      "https://womanmagazine-npp.com/wp-content/uploads/cache/images/2021/11/IMG_1024.webp",
-  },
-  {
-    id: 3,
-    title: "men's clothing",
-    image:
-      "https://ds393qgzrxwzn.cloudfront.net/cat1/img/images/0/9al85Sw18I.jpg",
-  },
-  {
-    id: 4,
-    title: "women's clothing",
-    image:
-      "https://media.glamour.com/photos/595ea38ef4609a21dfa1137e/1:1/w_352/summer-fashion.jpg",
-  },
-]
-
 export const ShopSortFilters = [
   {
     id: 1,

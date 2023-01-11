@@ -36,7 +36,7 @@ export function CatalogPage() {
         totalCount={200}
         currentPage={page}
         pageSize={itemsPerPage}
-        siblingCount={1}
+        siblingCount={0}
       />
     </>
   )
