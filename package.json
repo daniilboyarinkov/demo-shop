@@ -1,6 +1,7 @@
 {
-  "name": "vite-reactts-tailwind-rtk-eslint",
+  "name": "demo-shop",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

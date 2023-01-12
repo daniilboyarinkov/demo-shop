@@ -6,7 +6,7 @@ import { useGetAllCategoriesQuery } from "../features/products/productsApi"
 
 // export interface ICategoriesProps {}
 
-export function Categories() {
+export function CategoriesCarousel() {
   const { data, isLoading, error } = useGetAllCategoriesQuery("")
 
   if (isLoading)

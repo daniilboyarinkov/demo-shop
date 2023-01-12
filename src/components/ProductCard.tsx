@@ -2,6 +2,8 @@ import React from "react"
 
 import { NavLink } from "react-router-dom"
 
+import { useAppDispatch, useAppSelector } from "../app/hooks"
+import { toggleAddToFavorites } from "../features/favoriteSlice"
 import { IProduct } from "../features/products/productsApi"
 // import CartSVG from "../svg/cartSVG"
 import HeartSVG from "../svg/heartSVG"
@@ -12,6 +14,13 @@ export interface IProductCard {
 }
 
 export function ProductCard({ product }: IProductCard) {
+  const dispatch = useAppDispatch()
+  const favorites = useAppSelector((state) => state.favorites.favorites)
+
+  const handleAddToFavorite = () => {
+    if (product) dispatch(toggleAddToFavorites(product))
+  }
+
   return (
     <div
       className="relative card card-compact bg-base-100 shadow-xl grid"
@@ -52,8 +61,11 @@ export function ProductCard({ product }: IProductCard) {
         </button>
       </div> */}
 
-      <button className="absolute top-0 right-0 btn btn-secondary flex items-center justify-center rounded-none rounded-tr-lg rounded-bl-lg">
-        <HeartSVG />
+      <button
+        onClick={handleAddToFavorite}
+        className="absolute top-0 right-0 btn btn-secondary flex items-center justify-center rounded-none rounded-tr-lg rounded-bl-lg"
+      >
+        <HeartSVG filled={favorites.includes(product!)} />
       </button>
     </div>
   )

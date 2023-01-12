@@ -10,12 +10,17 @@ import CartSVG from "../svg/cartSVG"
 import HeartSVG from "../svg/heartSVG"
 import LogoTempSVG from "../svg/LogoTempSVG"
 import { ThemeToggleButtonSVG } from "../svg/ThemeToggleButtonSVG"
+import { InflectNumberNoun } from "../utils/InflectNumberNoun"
 
 // export interface IHeaderProps {}
 
 export function Header() {
   const theme = useAppSelector((state) => state.theme)
   const dispatch = useAppDispatch()
+
+  const cartCount = useAppSelector((state) => state.cart.amount)
+  const cartSubtotal = useAppSelector((state) => state.cart.subtotal)
+  const favoritesCount = useAppSelector((state) => state.favorites.amount)
 
   const handleThemeChange = () => {
     const next = theme === "dark" ? "light" : "dark"
@@ -34,7 +39,9 @@ export function Header() {
         <NavLink className="btn btn-ghost btn-circle" to={EndPoints.Favorites}>
           <div className="indicator">
             <HeartSVG />
-            <span className="badge badge-sm indicator-item">3</span>
+            <span className="badge badge-sm indicator-item">
+              {favoritesCount}
+            </span>
           </div>
         </NavLink>
 
@@ -42,7 +49,7 @@ export function Header() {
           <label tabIndex={1} className="btn btn-ghost btn-circle">
             <div className="indicator">
               <CartSVG />
-              <span className="badge badge-sm indicator-item">8</span>
+              <span className="badge badge-sm indicator-item">{cartCount}</span>
             </div>
           </label>
           <div
@@ -50,14 +57,17 @@ export function Header() {
             className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div className="card-body">
-              <span className="font-bold text-lg">8 Items</span>
-              <span className="text-info">Subtotal: $999</span>
+              <span className="font-bold text-lg">
+                {cartCount}{" "}
+                {InflectNumberNoun(cartCount, ["товар", "товара", "товаров"])}
+              </span>
+              <span className="text-info self-end">${cartSubtotal}</span>
               <div className="card-actions">
                 <NavLink
                   className="btn btn-primary btn-block"
                   to={EndPoints.Cart}
                 >
-                  View cart
+                  В корзину
                 </NavLink>
               </div>
             </div>

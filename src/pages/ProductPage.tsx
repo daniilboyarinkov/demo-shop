@@ -2,7 +2,7 @@ import React from "react"
 
 import { useParams } from "react-router-dom"
 
-import { ProductPreview, ProductInfo } from "../components"
+import { ProductPreview, ProductInfo, SuggestSection } from "../components"
 import { useGetProductByIdQuery } from "../features/products/productsApi"
 
 export function ProductPage() {
@@ -24,10 +24,16 @@ export function ProductPage() {
   return (
     <div>
       {/* ProductPreview ProductInfo SuggestSection */}
-      <h1 className="text-2xl m-2">{product?.title}</h1>
-      <div className="grid place-items-center md:grid-cols-2">
+      <div className="grid md:grid-cols-2">
         <ProductPreview images={product?.images ?? []} />
         <ProductInfo product={product} />
+      </div>
+      <div className="p-2 md:p-6 mt-10 max-w-[100vw]">
+        <h1 className="text-xl mb-4">Вам может понравиться</h1>
+        <SuggestSection
+          currentId={product?.id ?? 0}
+          category={product?.category.id ?? 1}
+        />
       </div>
     </div>
   )

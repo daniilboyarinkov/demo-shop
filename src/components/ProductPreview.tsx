@@ -24,7 +24,7 @@ export const ProductPreview = ({ images }: Props) => {
   }
 
   return (
-    <div className="flex w-full md:p-6 gap-4 min-h-[640px]">
+    <div className="flex w-full md:p-6 gap-4 min-h-[640px] max-h-[100vh]">
       <div className=" md:w-[72px] md:visible overflow-y-auto overflow-x-hidden hidden md:flex md:flex-col gap-2">
         {images?.map((img, index) => (
           <button key={img} onClick={() => handleSelect(index)}>

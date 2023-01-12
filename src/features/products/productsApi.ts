@@ -27,6 +27,10 @@ export const productsApi = createApi({
     getAllProducts: builder.query<IProduct[], string>({
       query: () => `/products`,
     }),
+    getSuggestionProducts: builder.query<IProduct[], number>({
+      query: (category) =>
+        `/categories/${category}/products?offset=${0}&limit=${5}`,
+    }),
     getProductById: builder.query<IProduct, number>({
       query: (productsId: number) => `/products/${productsId}`,
     }),
@@ -45,4 +49,5 @@ export const {
   useGetProductByIdQuery,
   useGetPaginationProductsQuery,
   useGetAllCategoriesQuery,
+  useGetSuggestionProductsQuery,
 } = productsApi
