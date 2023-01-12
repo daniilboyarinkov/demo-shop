@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import { toggleAddToCart } from "../features/cartSlice"
@@ -17,6 +17,19 @@ export const ProductInfo = ({ product }: Props) => {
   const products = useAppSelector((state) => state.cart.cart)
   const favorites = useAppSelector((state) => state.favorites.favorites)
 
+  const [isAddedToCart, setIsAddedToCart] = useState(false)
+  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false)
+
+  useEffect(() => {
+    if (!product) return
+    console.log(products.includes(product))
+    setIsAddedToCart(products.includes(product))
+  }, [products, product])
+  useEffect(() => {
+    if (!product) return
+    console.log(favorites.includes(product))
+    setIsAddedToFavorites(favorites.includes(product))
+  }, [favorites, product])
   const handleAddToCart = () => {
     if (product) dispatch(toggleAddToCart(product))
   }
@@ -41,15 +54,14 @@ export const ProductInfo = ({ product }: Props) => {
           <button
             onClick={handleAddToCart}
             className={`btn btn-primary btn-wide ${
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              products.includes(product!) && "btn-accent"
+              isAddedToCart && "btn-accent"
             }`}
           >
             <CartSVG />
           </button>
           <button onClick={handleAddToFavorite} className="btn btn-secondary">
             {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
-            <HeartSVG filled={favorites.includes(product!)} />
+            <HeartSVG filled={isAddedToFavorites} />
           </button>
         </div>
       </div>
