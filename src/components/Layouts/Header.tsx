@@ -10,6 +10,7 @@ import CartSVG from "../../svg/cartSVG"
 import HeartSVG from "../../svg/heartSVG"
 import LogoTempSVG from "../../svg/LogoTempSVG"
 import { ThemeToggleButtonSVG } from "../../svg/ThemeToggleButtonSVG"
+import { ConvertCurrency } from "../../utils/ConvertCurrency"
 import { InflectNumberNoun } from "../../utils/InflectNumberNoun"
 
 // export interface IHeaderProps {}
@@ -61,7 +62,9 @@ export function Header() {
                 {cartCount}{" "}
                 {InflectNumberNoun(cartCount, ["товар", "товара", "товаров"])}
               </span>
-              <span className="text-info self-end">${cartSubtotal}</span>
+              <span className="text-info self-end">
+                {ConvertCurrency(cartSubtotal)}
+              </span>
               <div className="card-actions">
                 <NavLink
                   className="btn btn-primary btn-block"
