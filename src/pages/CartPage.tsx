@@ -26,7 +26,11 @@ export function CartPage() {
   const products = useAppSelector((state) => state.cart.cart)
   const total = useAppSelector((state) => state.cart.subtotal)
 
-  const { register, handleSubmit } = useForm<IFormInput>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
 
   const handleDeleteProduct = (product: IProduct) => {
@@ -62,29 +66,55 @@ export function CartPage() {
               <span className="label-text opacity-60">Персональные данные</span>
             </label>
             <input
-              {...register("lastName")}
+              {...register("lastName", {
+                required: "Поле Фамилия является обязательным",
+              })}
               className="input input-bordered w-full max-w-xs"
               type="text"
               placeholder="Иванов"
             />
+            {errors?.lastName && (
+              <p className="text-error text-xs">* {errors.lastName.message}</p>
+            )}
             <input
-              {...register("firstName")}
+              {...register("firstName", {
+                required: "Поле Имя является обязательным",
+              })}
               className="input input-bordered w-full max-w-xs"
               type="text"
               placeholder="Иван"
             />
+            {errors?.firstName && (
+              <p className="text-error text-xs">* {errors.firstName.message}</p>
+            )}
             <input
-              {...register("email")}
+              {...register("email", {
+                required: "Поле Email является обязательным",
+                pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              })}
               className="input input-bordered w-full max-w-xs"
               type="email"
               placeholder="example@mail.ru"
             />
+            {errors?.email && (
+              <p className="text-error text-xs">* {errors.email.message}</p>
+            )}
             <input
-              {...register("phone")}
+              {...register("phone", {
+                required: "Поле Номер Телефона является обязательным",
+                pattern: {
+                  value:
+                    /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                  message: "Формат номера телефона: +7 (999) 999 9999",
+                },
+              })}
               className="input input-bordered w-full max-w-xs"
               type="tel"
-              placeholder="+7 (000) 000-00-00"
+              placeholder="+7 (000) 000 0000"
             />
+            {errors?.phone && (
+              <p className="text-error text-xs">* {errors.phone.message}</p>
+            )}
           </section>
 
           <section className="grid gap-2 p-4 border rounded-md border-base-300">
@@ -94,7 +124,9 @@ export function CartPage() {
             <label className="label cursor-pointer">
               <span className="label-text">Самовывоз</span>
               <input
-                {...register("deliveryType")}
+                {...register("deliveryType", {
+                  required: "Необходимо указать способ доставки",
+                })}
                 className="radio radio-primary"
                 type="radio"
                 value="Самовывоз"
@@ -103,7 +135,9 @@ export function CartPage() {
             <label className="label cursor-pointer">
               <span className="label-text">Почта России</span>
               <input
-                {...register("deliveryType")}
+                {...register("deliveryType", {
+                  required: "Необходимо указать способ доставки",
+                })}
                 className="radio radio-primary"
                 type="radio"
                 value="Почта России"
@@ -112,12 +146,19 @@ export function CartPage() {
             <label className="label cursor-pointer">
               <span className="label-text">Транспортная служба</span>
               <input
-                {...register("deliveryType")}
+                {...register("deliveryType", {
+                  required: "Необходимо указать способ доставки",
+                })}
                 className="radio radio-primary"
                 type="radio"
                 value="Транспортная служба"
               />
             </label>
+            {errors?.deliveryType && (
+              <p className="text-error text-xs">
+                * {errors?.deliveryType.message}
+              </p>
+            )}
           </section>
 
           <section className="grid gap-2 p-4 border rounded-md border-base-300">
@@ -125,17 +166,32 @@ export function CartPage() {
               <span className="label-text"> Адрес доставки</span>
             </label>
             <input
-              {...register("addressTown")}
+              {...register("addressTown", {
+                required: "Необходимо указать Город Доставки",
+              })}
               className="input input-bordered w-full max-w-xs"
               type="text"
               placeholder="Город"
             />
+            {errors?.addressTown && (
+              <p className="text-error text-xs">
+                * {errors?.addressTown.message}
+              </p>
+            )}
             <input
-              {...register("postCode")}
+              {...register("postCode", {
+                required: "Необходимо указать Отделение Почты",
+                pattern: { value: /\d{6}/, message: "Пример кода: 123456" },
+              })}
               className="input input-bordered w-full max-w-xs"
               type="number"
               placeholder="Отделение почты"
             />
+            {errors?.postCode && (
+              <p className="text-error  text-xs">
+                * {errors?.postCode.message}
+              </p>
+            )}
           </section>
 
           <section className="grid gap-2 p-4 border rounded-md border-base-300">
@@ -147,7 +203,9 @@ export function CartPage() {
                 Денежным переводом (Visa, MasterCard)
               </span>
               <input
-                {...register("paymentType")}
+                {...register("paymentType", {
+                  required: "Необходимо указать Способ Оплаты",
+                })}
                 className="radio radio-primary"
                 type="radio"
                 value="Самовывоз"
@@ -158,12 +216,19 @@ export function CartPage() {
                 Отложенным платежем в отделении почты
               </span>
               <input
-                {...register("paymentType")}
+                {...register("paymentType", {
+                  required: "Необходимо указать Способ Оплаты",
+                })}
                 className="radio radio-primary"
                 type="radio"
                 value="Почта России"
               />
             </label>
+            {errors?.paymentType && (
+              <p className="text-error text-xs">
+                * {errors?.paymentType.message}
+              </p>
+            )}
           </section>
 
           <button className="btn btn-primary sm:col-span-2" type="submit">
