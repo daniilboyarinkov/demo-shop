@@ -22,14 +22,17 @@ export const ProductInfo = ({ product }: Props) => {
 
   useEffect(() => {
     if (!product) return
-    console.log(products.includes(product))
-    setIsAddedToCart(products.includes(product))
+    console.log(products)
+    const item = products.find((p: IProduct) => p.id === product.id)
+    setIsAddedToCart(!!item)
   }, [products, product])
+
   useEffect(() => {
     if (!product) return
-    console.log(favorites.includes(product))
-    setIsAddedToFavorites(favorites.includes(product))
+    const item = favorites.find((p: IProduct) => p.id === product.id)
+    setIsAddedToFavorites(!!item)
   }, [favorites, product])
+
   const handleAddToCart = () => {
     if (product) dispatch(toggleAddToCart(product))
   }

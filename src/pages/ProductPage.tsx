@@ -16,7 +16,7 @@ export function ProductPage() {
   if (isLoading)
     return (
       <div className="grid place-content-center w-full h-full">
-        <progress className="progress w-56"></progress>
+        <progress className="progress w-56" />
       </div>
     )
   if (error) return <div>error</div>
