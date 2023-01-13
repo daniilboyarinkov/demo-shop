@@ -1,11 +1,10 @@
 import React from "react"
 
-import { ProductCard } from "./ProductCard"
-
 import {
   IProduct,
   useGetSuggestionProductsQuery,
-} from "../features/products/productsApi"
+} from "../../features/products/productsApi"
+import { ProductCard } from "../Product/ProductCard"
 
 type Props = {
   currentId: number

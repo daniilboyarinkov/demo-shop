@@ -1,7 +1,7 @@
 import React from "react"
 
-import { ShopSortFilters } from "../const/data-shop"
-import { ChevronDownSVG } from "../svg/ChevronDownSVG"
+import { ShopSortFilters } from "../../const/data-shop"
+import { ChevronDownSVG } from "../../svg/ChevronDownSVG"
 
 // type Props = {}
 

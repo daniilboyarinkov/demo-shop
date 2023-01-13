@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
 
-import { useAppDispatch, useAppSelector } from "../app/hooks"
-import { toggleAddToCart } from "../features/cartSlice"
-import { toggleAddToFavorites } from "../features/favoriteSlice"
-import { IProduct } from "../features/products/productsApi"
-import CartSVG from "../svg/cartSVG"
-import HeartSVG from "../svg/heartSVG"
-import { ConvertCurrency } from "../utils/ConvertCurrency"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { toggleAddToCart } from "../../features/cartSlice"
+import { toggleAddToFavorites } from "../../features/favoriteSlice"
+import { IProduct } from "../../features/products/productsApi"
+import CartSVG from "../../svg/cartSVG"
+import HeartSVG from "../../svg/heartSVG"
+import { ConvertCurrency } from "../../utils/ConvertCurrency"
 
 type Props = {
   product?: IProduct

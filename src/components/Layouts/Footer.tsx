@@ -1,8 +1,8 @@
 import React from "react"
 
-import { FooterLinks, ShopContacts, ShopData } from "../const/data-shop"
-import LogoTempSVG from "../svg/LogoTempSVG"
-import { ServiceContact } from "../svg/ServiceContactSVG"
+import { FooterLinks, ShopContacts, ShopData } from "../../const/data-shop"
+import LogoTempSVG from "../../svg/LogoTempSVG"
+import { ServiceContact } from "../../svg/ServiceContactSVG"
 
 // type Props = {}
 

@@ -1,7 +1,7 @@
 import React from "react"
 
-import { useGetAllCategoriesQuery } from "../features/products/productsApi"
-import { ChevronDownSVG } from "../svg/ChevronDownSVG"
+import { useGetAllCategoriesQuery } from "../../features/products/productsApi"
+import { ChevronDownSVG } from "../../svg/ChevronDownSVG"
 
 // export interface ICategoriesMenuProps {}
 

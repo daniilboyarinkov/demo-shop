@@ -1,8 +1,7 @@
 import React from "react"
 
-import { ProductCard } from "./ProductCard"
-
-import { IProduct } from "../features/products/productsApi"
+import { IProduct } from "../../features/products/productsApi"
+import { ProductCard } from "../Product/ProductCard"
 
 export interface IProductSpaceProps {
   products?: IProduct[]

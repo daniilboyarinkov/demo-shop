@@ -2,7 +2,7 @@ import React from "react"
 
 // export interface ISubscribeProps {}
 
-export function Subscribe() {
+export function SubscribeSection() {
   return (
     <>
       <div className="grid place-items-center gap-6 my-[80px] text-center">

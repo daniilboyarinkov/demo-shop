@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 
 import { NavLink } from "react-router-dom"
 
-import { useAppDispatch, useAppSelector } from "../app/hooks"
-import { toggleAddToFavorites } from "../features/favoriteSlice"
-import { IProduct } from "../features/products/productsApi"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { toggleAddToFavorites } from "../../features/favoriteSlice"
+import { IProduct } from "../../features/products/productsApi"
 // import CartSVG from "../svg/cartSVG"
-import HeartSVG from "../svg/heartSVG"
-import { ConvertCurrency } from "../utils/ConvertCurrency"
+import HeartSVG from "../../svg/heartSVG"
+import { ConvertCurrency } from "../../utils/ConvertCurrency"
 
 export interface IProductCard {
   product: IProduct

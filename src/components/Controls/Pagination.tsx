@@ -1,6 +1,6 @@
 import React from "react"
 
-import { usePagination, DOTS } from "../hooks/usePagination"
+import { usePagination, DOTS } from "../../hooks/usePagination"
 
 export interface IPagination {
   onPageChange: (num: number) => void
@@ -38,40 +38,43 @@ export const Pagination = ({
   const lastPage = (paginationRange ?? [])[(paginationRange?.length ?? 0) - 1]
 
   return (
-    <ul className="btn-group justify-center py-4">
+    <div className="btn-group justify-center py-4">
       {/* Left navigation arrow */}
-      <li disabled={currentPage === 1} className={`btn`} onClick={onPrevious}>
+      <button
+        disabled={currentPage === 1}
+        className={`btn`}
+        onClick={onPrevious}
+      >
         <div className="arrow left">«</div>
-      </li>
+      </button>
       {paginationRange?.map((pageNumber, index) => {
         // If the pageItem is a DOT, render the DOTS unicode character
         if (pageNumber === DOTS) {
           return (
-            <li key={index} className="btn">
+            <button key={index} className="btn">
               &#8230;
-            </li>
+            </button>
           )
         }
 
-        // Render our Page Pills
         return (
-          <li
+          <button
             key={index}
             className={`btn ${pageNumber === currentPage && "btn-primary"}`}
             onClick={() => onPageChange(Number(pageNumber))}
           >
             {pageNumber}
-          </li>
+          </button>
         )
       })}
       {/*  Right Navigation arrow */}
-      <li
+      <button
         disabled={currentPage === lastPage}
-        className={`btn `}
+        className={`btn`}
         onClick={onNext}
       >
         <div className="arrow right">»</div>
-      </li>
-    </ul>
+      </button>
+    </div>
   )
 }

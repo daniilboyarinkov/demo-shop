@@ -2,15 +2,15 @@ import React from "react"
 
 import { NavLink } from "react-router-dom"
 
-import { useAppDispatch, useAppSelector } from "../app/hooks"
-import { ShopData } from "../const/data-shop"
-import { EndPoints } from "../const/endpoints"
-import { set } from "../features/themeSlice"
-import CartSVG from "../svg/cartSVG"
-import HeartSVG from "../svg/heartSVG"
-import LogoTempSVG from "../svg/LogoTempSVG"
-import { ThemeToggleButtonSVG } from "../svg/ThemeToggleButtonSVG"
-import { InflectNumberNoun } from "../utils/InflectNumberNoun"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { ShopData } from "../../const/data-shop"
+import { EndPoints } from "../../const/endpoints"
+import { set } from "../../features/themeSlice"
+import CartSVG from "../../svg/cartSVG"
+import HeartSVG from "../../svg/heartSVG"
+import LogoTempSVG from "../../svg/LogoTempSVG"
+import { ThemeToggleButtonSVG } from "../../svg/ThemeToggleButtonSVG"
+import { InflectNumberNoun } from "../../utils/InflectNumberNoun"
 
 // export interface IHeaderProps {}
 

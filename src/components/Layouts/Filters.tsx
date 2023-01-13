@@ -1,8 +1,8 @@
 import React from "react"
 
-import { CategoriesDropDown } from "./CategoriesMenu"
-import { Search } from "./Search"
-import { SortByDropDown } from "./SortByDropDown"
+import { CategoriesDropDown } from "../Controls/CategoriesMenu"
+import { Search } from "../Controls/Search"
+import { SortByDropDown } from "../Controls/SortByDropDown"
 
 // export interface IFiltersProps {}
 

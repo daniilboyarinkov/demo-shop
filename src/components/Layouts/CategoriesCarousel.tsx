@@ -2,7 +2,7 @@ import React from "react"
 
 import { NavLink } from "react-router-dom"
 
-import { useGetAllCategoriesQuery } from "../features/products/productsApi"
+import { useGetAllCategoriesQuery } from "../../features/products/productsApi"
 
 // export interface ICategoriesProps {}
 

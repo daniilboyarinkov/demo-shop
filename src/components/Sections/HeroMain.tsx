@@ -2,8 +2,8 @@ import React from "react"
 
 import { NavLink } from "react-router-dom"
 
-import { ShopData } from "../const/data-shop"
-import { EndPoints } from "../const/endpoints"
+import { ShopData } from "../../const/data-shop"
+import { EndPoints } from "../../const/endpoints"
 
 // export interface IHeroMainProps {}
 
