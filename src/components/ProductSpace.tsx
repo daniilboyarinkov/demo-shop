@@ -11,7 +11,7 @@ export interface IProductSpaceProps {
 export function ProductSpace({ products }: IProductSpaceProps) {
   return (
     <div
-      className="pt-2 grid gap-10 md:px-10"
+      className="pt-2 grid gap-10 md:px-10 place-items-center"
       style={{
         gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
       }}
