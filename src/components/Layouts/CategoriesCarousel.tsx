@@ -24,7 +24,7 @@ export function CategoriesCarousel() {
           category.image && (
             <div key={category.id} className="carousel-item">
               <figure className="relative w-full">
-                <NavLink to={"/"}>
+                <NavLink to={`/catalog?category=${category.id}`}>
                   <img
                     src={category.image}
                     alt={category.name}

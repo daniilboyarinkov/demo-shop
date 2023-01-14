@@ -1,11 +1,16 @@
 import React from "react"
 
-import { useGetAllCategoriesQuery } from "../../features/products/productsApi"
+import {
+  ICategory,
+  useGetAllCategoriesQuery,
+} from "../../features/products/productsApi"
 import { ChevronDownSVG } from "../../svg/ChevronDownSVG"
 
-// export interface ICategoriesMenuProps {}
+export interface ICategoriesMenuProps {
+  setCategory: (category: ICategory) => void
+}
 
-export function CategoriesDropDown() {
+export function CategoriesDropDown({ setCategory }: ICategoriesMenuProps) {
   const { data, isLoading, error } = useGetAllCategoriesQuery("")
 
   if (isLoading) return <div>loading...</div>
@@ -24,7 +29,11 @@ export function CategoriesDropDown() {
         className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-11/12 md:w-52"
       >
         {data?.map((category) => (
-          <li key={category.id} className="capitalize">
+          <li
+            onClick={() => setCategory(category)}
+            key={category.id}
+            className="capitalize"
+          >
             <a>{category.name}</a>
           </li>
         ))}

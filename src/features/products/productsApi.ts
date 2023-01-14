@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
+import { randomIntFromInterval } from "../../utils/randomIntFromInterval"
+
 export interface IProduct {
   id: number
   title: string
@@ -20,6 +22,12 @@ export interface IPaginate {
   limit: number
 }
 
+export interface IPaginateCategory {
+  offset: number
+  limit: number
+  category?: ICategory | string | null
+}
+
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.escuelajs.co/api/v1" }),
@@ -29,7 +37,10 @@ export const productsApi = createApi({
     }),
     getSuggestionProducts: builder.query<IProduct[], number>({
       query: (category) =>
-        `/categories/${category}/products?offset=${0}&limit=${5}`,
+        `/categories/${category}/products?offset=${randomIntFromInterval(
+          0,
+          10
+        )}&limit=${6}`,
     }),
     getProductById: builder.query<IProduct, number>({
       query: (productsId: number) => `/products/${productsId}`,
@@ -37,6 +48,20 @@ export const productsApi = createApi({
     getPaginationProducts: builder.query<IProduct[], IPaginate>({
       query: (pagination: IPaginate) =>
         `/products?offset=${pagination.offset}&limit=${pagination.limit}`,
+    }),
+    getPaginationProductsByCategory: builder.query<
+      IProduct[],
+      IPaginateCategory
+    >({
+      query: (pagination: IPaginateCategory) => {
+        if (!pagination.category)
+          return `/products?offset=${pagination.offset}&limit=${pagination.limit}`
+
+        if (typeof pagination.category === "string")
+          return `/categories/${pagination?.category}/products?offset=${pagination.offset}&limit=${pagination.limit}`
+
+        return `/categories/${pagination?.category?.id}/products?offset=${pagination.offset}&limit=${pagination.limit}`
+      },
     }),
     getAllCategories: builder.query<ICategory[], string>({
       query: () => `/categories`,
@@ -50,4 +75,5 @@ export const {
   useGetPaginationProductsQuery,
   useGetAllCategoriesQuery,
   useGetSuggestionProductsQuery,
+  useGetPaginationProductsByCategoryQuery,
 } = productsApi
