@@ -32,7 +32,7 @@ export function CategoriesCarousel() {
                   />
                 </NavLink>
                 <figcaption className="w-full absolute bottom-1 left-1/2 -translate-x-1/2 text-center">
-                  <h1 className="text-3xl capitalize text-primary font-extrabold">
+                  <h1 className="text-3xl capitalize text-slate-300 font-extrabold badge p-6">
                     {category.name}
                   </h1>
                 </figcaption>

@@ -10,7 +10,7 @@ import { ConvertCurrency } from "../utils/ConvertCurrency"
 
 // export interface ICartPageProps {}
 
-export interface IFormInput {
+interface IFormInput {
   lastName: string
   firstName: string
   email: string
