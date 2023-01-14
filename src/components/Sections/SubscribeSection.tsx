@@ -12,11 +12,17 @@ export function SubscribeSection() {
           placeholder="urawesome@mail.com"
           className="input input-bordered input-primary w-full max-w-[256px]"
         />
-        <button className="btn btn-wide btn-primary">Подписаться</button>
-        <p className="text-justify text-gray-500 opacity-60 max-w-xs text-xs">
+        <div
+          className="tooltip text-justify text-sm"
+          data-tip="* Нажимая на кнопку «Подписаться», я соглашаюсь на обработку моих
+          персональных данных и ознакомлен(а) с условиями конфиденциальности."
+        >
+          <button className="btn btn-wide btn-primary">Подписаться</button>
+        </div>
+        {/* <p className="text-justify text-gray-500 opacity-60 max-w-xs text-xs">
           * Нажимая на кнопку «Подписаться», я соглашаюсь на обработку моих
           персональных данных и ознакомлен(а) с условиями конфиденциальности.
-        </p>
+        </p> */}
       </div>
       <div className="chat chat-start mx-10 -mt-10 mb-10">
         <div className="chat-bubble chat-bubble-primary">

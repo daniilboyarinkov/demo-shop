@@ -26,6 +26,7 @@ export interface IPaginateCategory {
   offset: number
   limit: number
   category?: ICategory | string | null
+  query?: string
 }
 
 export const productsApi = createApi({
@@ -45,6 +46,9 @@ export const productsApi = createApi({
     getProductById: builder.query<IProduct, number>({
       query: (productsId: number) => `/products/${productsId}`,
     }),
+    getProductByTitleFilter: builder.query<IProduct[], string>({
+      query: (title: string) => `/products/?title=${title}`,
+    }),
     getPaginationProducts: builder.query<IProduct[], IPaginate>({
       query: (pagination: IPaginate) =>
         `/products?offset=${pagination.offset}&limit=${pagination.limit}`,
@@ -55,12 +59,22 @@ export const productsApi = createApi({
     >({
       query: (pagination: IPaginateCategory) => {
         if (!pagination.category)
-          return `/products?offset=${pagination.offset}&limit=${pagination.limit}`
+          return `/products?offset=${pagination.offset}&limit=${
+            pagination.limit
+          }${pagination?.query && `&title=${pagination?.query}`}`
 
         if (typeof pagination.category === "string")
-          return `/categories/${pagination?.category}/products?offset=${pagination.offset}&limit=${pagination.limit}`
+          return `/products?offset=${pagination.offset}&limit=${
+            pagination.limit
+          }&categoryId=${pagination?.category}${
+            pagination?.query && `&title=${pagination?.query}`
+          }`
 
-        return `/categories/${pagination?.category?.id}/products?offset=${pagination.offset}&limit=${pagination.limit}`
+        return `/products?offset=${pagination.offset}&limit=${
+          pagination.limit
+        }&categoryId=${pagination?.category?.id}${
+          pagination?.query && `&title=${pagination?.query}`
+        }`
       },
     }),
     getAllCategories: builder.query<ICategory[], string>({
@@ -76,4 +90,5 @@ export const {
   useGetAllCategoriesQuery,
   useGetSuggestionProductsQuery,
   useGetPaginationProductsByCategoryQuery,
+  useGetProductByTitleFilterQuery,
 } = productsApi

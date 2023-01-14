@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { useSearchParams } from "react-router-dom"
 
@@ -10,8 +10,13 @@ import {
 
 const itemsPerPage = 12
 
+interface IParams {
+  [str: string]: string
+}
+
 export function CatalogPage() {
   const [searchParams, setSearchParams] = useSearchParams()
+  const [query, setQuery] = useState("")
 
   const [page, setPage] = useState(Number(searchParams?.get("page") ?? 1))
   const [category, setCategory] = useState<ICategory | string | null>(
@@ -19,35 +24,34 @@ export function CatalogPage() {
   )
 
   const { data, error, isLoading } = useGetPaginationProductsByCategoryQuery({
-    offset: itemsPerPage * page,
+    offset: itemsPerPage * (page - 1),
     limit: itemsPerPage,
     category: category,
+    query: query,
   })
 
-  interface IParams {
-    [str: string]: string
+  const handleQueryChange = (q: string) => {
+    setQuery(q)
+    setPage(1)
   }
 
   const handlePageClick = (num: number) => {
     setPage(num)
+  }
+
+  useEffect(() => {
     const params: IParams = {}
     if (category)
       params["category"] =
         typeof category === "string" ? category : String(category.id)
     setSearchParams({
       ...params,
-      page: String(num),
+      page: String(page),
     })
-  }
+  }, [category, page, setSearchParams])
 
   const handleSetCategory = (category: ICategory) => {
     setCategory(category)
-    const params: IParams = {}
-    if (page) params["page"] = String(page)
-    setSearchParams({
-      ...params,
-      category: String(category.id),
-    })
   }
 
   if (isLoading)
@@ -62,14 +66,25 @@ export function CatalogPage() {
 
   if (!data?.length)
     return (
-      <div className="grid place-items-center">
-        Товаров нет. Приходите завтра
+      <div className="grid">
+        <Filters
+          setCategory={handleSetCategory}
+          query={query}
+          setQuery={setQuery}
+        />
+        <div className="grid place-items-center">
+          Товаров нет. Приходите завтра
+        </div>
       </div>
     )
 
   return (
     <>
-      <Filters setCategory={handleSetCategory} />
+      <Filters
+        setCategory={handleSetCategory}
+        query={query}
+        setQuery={handleQueryChange}
+      />
       <ProductSpace products={data} />
       <Pagination
         onPageChange={handlePageClick}
