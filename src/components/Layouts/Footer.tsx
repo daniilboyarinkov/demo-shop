@@ -1,5 +1,7 @@
 import React from "react"
 
+import { NavLink } from "react-router-dom"
+
 import { FooterLinks, ShopContacts, ShopData } from "../../const/data-shop"
 import LogoTempSVG from "../../svg/LogoTempSVG"
 import { ServiceContact } from "../../svg/ServiceContactSVG"
@@ -14,9 +16,9 @@ export const Footer = () => {
           <div key={t}>
             <span className="footer-title">{t}</span>
             {FooterLinks[t].map((l) => (
-              <a key={l.id} className="link link-hover" href={l.link}>
+              <NavLink key={l.id} className="link link-hover" to={l.link}>
                 {l.title}
-              </a>
+              </NavLink>
             ))}
           </div>
         ))}

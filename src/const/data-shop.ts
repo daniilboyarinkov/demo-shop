@@ -1,3 +1,5 @@
+import { EndPoints } from "./endpoints"
+
 export const ShopData = {
   name: "Shop Name",
   baseUrl: "http://localhost:5173/",
@@ -16,9 +18,9 @@ export const ShopSortFilters = [
 ]
 
 export const ShopContacts: ShopContactsType = {
-  mails: [],
-  phones: [],
-  addresses: [],
+  mails: ["example@example.com"],
+  phones: ["+7 (999) 999-9999", "+7 (000) 000-0000"],
+  addresses: ["г. Москва ул. Киренского, 26a"],
   socials: [
     {
       id: 1,
@@ -53,17 +55,21 @@ export interface ShopContactsType {
 
 export const FooterLinks: FooterLinksType = {
   компания: [
-    { id: 1, title: "O нас", link: "" },
-    { id: 2, title: "Контакты", link: "" },
+    { id: 1, title: "O нас", link: EndPoints.About },
+    { id: 2, title: "Контакты", link: EndPoints.About },
   ],
   полезное: [
-    { id: 3, title: "Оплата и доставка", link: "" },
-    { id: 4, title: "Условия возврата", link: "" },
-    { id: 5, title: "Бонусная система", link: "" },
+    { id: 3, title: "Оплата и доставка", link: EndPoints.PaymentDelivery },
+    { id: 4, title: "Условия возврата", link: EndPoints.Return },
+    // { id: 5, title: "Бонусная система", link: "" },
   ],
   покупателю: [
-    { id: 6, title: "Публичная оферта", link: "" },
-    { id: 7, title: "Политика конфиденциальности", link: "" },
+    { id: 6, title: "Публичная оферта", link: EndPoints.PublicOffer },
+    {
+      id: 7,
+      title: "Политика конфиденциальности",
+      link: EndPoints.Confidential,
+    },
   ],
 }
 

@@ -4,5 +4,9 @@ export const EndPoints = {
   Cart: "/cart",
   Catalog: "/catalog",
   Favorites: "/favorites",
+  Return: "/return-info",
+  PaymentDelivery: "/payment-delivery-info",
+  Confidential: "/confidential-info",
+  PublicOffer: "/public-offer-info",
   Product: "/catalog/:productId",
 }
