@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react"
+import React from "react"
 
 import { SubmitHandler, useForm } from "react-hook-form"
 
@@ -11,17 +11,16 @@ interface IFormInput {
 }
 
 export function SubscribeSection() {
-  const [email, setEmail] = useState("")
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    // const { email: toEmail } = data
+    const { email: toEmail } = data
     // SendEmail(toEmail)
-    console.log(data)
+    alert(`Отправка сообщения на почту ${toEmail}`)
+    alert(`ну или еще нет...`)
   }
 
   return (
@@ -42,10 +41,6 @@ export function SubscribeSection() {
           })}
           placeholder="test@mail.com"
           className="input input-bordered input-primary w-full max-w-[256px]"
-          value={email}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setEmail(e?.target?.value)
-          }}
         />
         {errors?.email && (
           <p className="text-error text-xs">* {errors.email.message}</p>
@@ -67,22 +62,6 @@ export function SubscribeSection() {
           персональных данных и ознакомлен(а) с условиями конфиденциальности.
         </p> */}
       </form>
-      {/* <label htmlFor="my-modal-4" className="btn">
-        open modal
-      </label>
-
-      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-      <label htmlFor="my-modal-4" className="modal cursor-pointer">
-        <label className="modal-box relative" htmlFor="">
-          <h3 className="text-lg font-bold">
-            Congratulations random Internet user!
-          </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-        </label>
-      </label> */}
 
       <div className="chat chat-start mx-10 -mt-10 mb-10">
         <div className="chat-bubble chat-bubble-primary">
