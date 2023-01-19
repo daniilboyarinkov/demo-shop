@@ -13,7 +13,7 @@ const bgImg =
 export function HeroMain() {
   return (
     <div
-      className={`hero`}
+      className="hero min-h-screen"
       style={{
         backgroundImage: `url('${bgImg}')`,
       }}
