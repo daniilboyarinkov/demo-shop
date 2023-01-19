@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { toggleAddToCart } from "../../features/cartSlice"
 import { toggleAddToFavorites } from "../../features/favoriteSlice"
 import { IProduct } from "../../features/products/productsApi"
+import styles from "../../styles/ProductInfo.module.scss"
 import CartSVG from "../../svg/cartSVG"
 import HeartSVG from "../../svg/heartSVG"
 import { ConvertCurrency } from "../../utils/ConvertCurrency"
@@ -42,18 +43,18 @@ export const ProductInfo = ({ product }: Props) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 justify-around px-2 py-10 md:px-10">
+    <div className={styles["product-info"]}>
       <div>
-        <h1 className="text-2xl">{product?.title}</h1>
-        <p className="flex items-center">
-          <span className="font-bold text-2xl py-2">
+        <h1 className={styles["product-info__title"]}>{product?.title}</h1>
+        <p className={styles["product-info__prices"]}>
+          <span className={styles["product-info__prices_new"]}>
             {ConvertCurrency(product?.price ?? 0)}
           </span>
-          <del className="ml-4 text">
+          <del className={styles["product-info__prices_old"]}>
             {ConvertCurrency(Math.floor((product?.price ?? 0) * 1.25))}
           </del>
         </p>
-        <div className="flex justify-around max-w-[320px] mt-4">
+        <div className={styles["product-info__CTA"]}>
           <button
             onClick={handleAddToCart}
             className={`btn btn-primary btn-wide ${
@@ -69,8 +70,8 @@ export const ProductInfo = ({ product }: Props) => {
         </div>
       </div>
       <div>
-        <h3 className="font-bold">Описание</h3>
-        <p className="">{product?.description}</p>
+        <h3 className={styles["product-info__description"]}>Описание</h3>
+        <p>{product?.description}</p>
       </div>
     </div>
   )

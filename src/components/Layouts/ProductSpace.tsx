@@ -1,6 +1,7 @@
 import React from "react"
 
 import { IProduct } from "../../features/products/productsApi"
+import styles from "../../styles/ProductSpace.module.scss"
 import { ProductCard } from "../Product/ProductCard"
 
 export interface IProductSpaceProps {
@@ -9,12 +10,7 @@ export interface IProductSpaceProps {
 
 export function ProductSpace({ products }: IProductSpaceProps) {
   return (
-    <div
-      className="pt-2 grid gap-10 md:px-10 place-items-center"
-      style={{
-        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-      }}
-    >
+    <div className={styles["product-space"]}>
       {products?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

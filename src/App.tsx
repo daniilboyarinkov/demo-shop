@@ -7,9 +7,8 @@ import { Footer, Header } from "./components"
 function App(): JSX.Element {
   return (
     <div
-      className="min-h-screen"
+      className="grid min-h-screen"
       style={{
-        display: "grid",
         gridTemplateRows: "auto 1fr auto",
       }}
     >

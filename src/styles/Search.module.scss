@@ -1,0 +1,11 @@
+.search {
+  @apply form-control;
+
+  &__input {
+    @apply input-group;
+  }
+
+  &__btn {
+    @apply btn btn-square;
+  }
+}

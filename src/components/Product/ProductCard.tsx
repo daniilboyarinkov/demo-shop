@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { toggleAddToFavorites } from "../../features/favoriteSlice"
 import { IProduct } from "../../features/products/productsApi"
 // import CartSVG from "../svg/cartSVG"
+import styles from "../../styles/ProductCard.module.scss"
 import HeartSVG from "../../svg/heartSVG"
 import { ConvertCurrency } from "../../utils/ConvertCurrency"
 
@@ -29,26 +30,25 @@ export function ProductCard({ product }: IProductCard) {
   }, [favorites, product])
 
   return (
-    <div
-      className="relative card card-compact bg-base-100 shadow-xl grid max-w-[540px]"
-      style={{
-        gridTemplateRows: "auto 1fr auto",
-      }}
-    >
+    <div className={styles["product-card"]}>
       <NavLink to={`/catalog/${product.id}`}>
         <figure className="relative">
-          <div className="absolute w-full h-full bg-gradient-to-b from-transparent via-transparent to-base-100"></div>
+          <div className={styles["product-card__gradient"]} />
           <img
             src={product.images[0]}
             alt="Shoes"
-            className="h-[320px] w-full object-cover rounded-lg"
+            className={styles["product-card__img"]}
           />
         </figure>
       </NavLink>
-      <div className="card-body">
+      <div className={styles["product-card__body"]}>
         <div className="flex items-center justify-between">
-          <h2 className="card-title max-w-[210px]">{product.title}</h2>
-          <b className="self-start">{ConvertCurrency(product.price)}</b>
+          <h2 className={styles["product-card__body__title"]}>
+            {product.title}
+          </h2>
+          <b className={styles["product-card__body__price"]}>
+            {ConvertCurrency(product.price)}
+          </b>
         </div>
 
         {/* уведомление о товарах новой коллекции. */}
@@ -70,7 +70,7 @@ export function ProductCard({ product }: IProductCard) {
 
       <button
         onClick={handleAddToFavorite}
-        className="absolute top-0 right-0 btn btn-secondary flex items-center justify-center rounded-none rounded-tr-lg rounded-bl-lg"
+        className={styles["product-card__like-btn"]}
       >
         <HeartSVG filled={isAddedToFavorites} />
       </button>

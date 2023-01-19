@@ -1,0 +1,15 @@
+.header {
+  @apply navbar bg-base-200 z-10;
+
+  &__logo {
+    @apply btn btn-ghost normal-case text-xl;
+
+    &__name {
+      @apply ml-1;
+    }
+  }
+
+  &__btn {
+    @apply btn btn-ghost btn-circle;
+  }
+}

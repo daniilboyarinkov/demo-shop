@@ -4,6 +4,7 @@ import {
   IProduct,
   useGetSuggestionProductsQuery,
 } from "../../features/products/productsApi"
+import styles from "../../styles/carousel.module.scss"
 import { ProductCard } from "../Product/ProductCard"
 
 type Props = {
@@ -16,18 +17,18 @@ export const SuggestSection = ({ category, currentId }: Props) => {
 
   if (isLoading)
     return (
-      <div className="grid place-content-center w-full h-full">
+      <div className="">
         <progress className="progress w-56"></progress>
       </div>
     )
   if (error) return <div>error</div>
 
   return (
-    <div className="carousel gap-2 rounded-box">
+    <div className={styles["app-carousel"]}>
       {data
         ?.filter((x) => x.id !== currentId)
         ?.map((product: IProduct) => (
-          <div key={product.id} className="carousel-item">
+          <div key={product.id} className={styles["app-carousel-item"]}>
             <ProductCard product={product} />
           </div>
         ))}

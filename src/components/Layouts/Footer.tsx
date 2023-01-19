@@ -3,6 +3,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 
 import { FooterLinks, ShopContacts, ShopData } from "../../const/data-shop"
+import styles from "../../styles/Footer.module.scss"
 import LogoTempSVG from "../../svg/LogoTempSVG"
 import { ServiceContact } from "../../svg/ServiceContactSVG"
 
@@ -11,7 +12,7 @@ import { ServiceContact } from "../../svg/ServiceContactSVG"
 export const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+      <footer className={styles["app-footer"]}>
         {Object.keys(FooterLinks).map((t: string) => (
           <div key={t}>
             <span className="footer-title">{t}</span>
@@ -24,22 +25,20 @@ export const Footer = () => {
         ))}
       </footer>
 
-      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
-        <div className="items-center grid-flow-col">
+      <footer className={styles["app-footer"]}>
+        <div className={styles["app-footer__logo"]}>
           <LogoTempSVG />
           <p>
             {ShopData.name} inc. <br />
             {ShopData.slogan}
           </p>
         </div>
-        <div className="md:place-self-center md:justify-self-end">
-          <div className="grid grid-flow-col gap-4">
-            {ShopContacts.socials.map((contact) => (
-              <a key={contact.id} href={contact.url}>
-                {ServiceContact({ service: contact.name })}
-              </a>
-            ))}
-          </div>
+        <div className={styles["app-footer__contacts"]}>
+          {ShopContacts.socials.map((contact) => (
+            <a key={contact.id} href={contact.url}>
+              {ServiceContact({ service: contact.name })}
+            </a>
+          ))}
         </div>
       </footer>
     </div>

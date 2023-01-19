@@ -14,7 +14,7 @@ interface IFormInput {
   lastName: string
   firstName: string
   email: string
-  phone: string
+  phone?: string
   deliveryType: string
   addressTown: string
   postCode: string
@@ -31,7 +31,9 @@ export function CartPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    alert(JSON.stringify(data, null, 4))
+  }
 
   const handleDeleteProduct = (product: IProduct) => {
     dispatch(removeFromCart(product))
@@ -99,7 +101,7 @@ export function CartPage() {
             {errors?.email && (
               <p className="text-error text-xs">* {errors.email.message}</p>
             )}
-            <input
+            {/* <input
               {...register("phone", {
                 required: "Поле Номер Телефона является обязательным",
                 pattern: {
@@ -111,7 +113,7 @@ export function CartPage() {
               className="input input-bordered w-full max-w-xs"
               type="tel"
               placeholder="+7 (000) 000 0000"
-            />
+            /> */}
             {errors?.phone && (
               <p className="text-error text-xs">* {errors.phone.message}</p>
             )}
@@ -182,6 +184,8 @@ export function CartPage() {
               {...register("postCode", {
                 required: "Необходимо указать Отделение Почты",
                 pattern: { value: /\d{6}/, message: "Пример кода: 123456" },
+                min: 100000,
+                max: 999999,
               })}
               className="input input-bordered w-full max-w-xs"
               type="number"

@@ -4,6 +4,7 @@ import {
   ICategory,
   useGetAllCategoriesQuery,
 } from "../../features/products/productsApi"
+import styles from "../../styles/menu.module.scss"
 import { ChevronDownSVG } from "../../svg/ChevronDownSVG"
 
 export interface ICategoriesMenuProps {
@@ -17,7 +18,11 @@ export function CategoriesDropDown({ setCategory }: ICategoriesMenuProps) {
   if (error) return <div>error</div>
 
   return (
-    <div className="dropdown dropdown-bottom w-full flex justify-center sm:justify-start">
+    <div
+      className={
+        styles["app-menu"] + " dropdown dropdown-bottom dropdown-hover"
+      }
+    >
       <label tabIndex={0} className="btn m-1 w-11/12 sm:w-52">
         <span className="lowercase">Категория</span>
         <span className="m-1 -mr-1">
@@ -26,7 +31,7 @@ export function CategoriesDropDown({ setCategory }: ICategoriesMenuProps) {
       </label>
       <ul
         tabIndex={0}
-        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-11/12 md:w-52"
+        className={styles["app-menu__content"] + " dropdown-content"}
       >
         {data?.map((category) => (
           <li

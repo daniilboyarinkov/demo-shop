@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { ShopData } from "../../const/data-shop"
 import { EndPoints } from "../../const/endpoints"
 import { set } from "../../features/themeSlice"
+import styles from "../../styles/Header.module.scss"
 import CartSVG from "../../svg/cartSVG"
 import HeartSVG from "../../svg/heartSVG"
 import LogoTempSVG from "../../svg/LogoTempSVG"
@@ -29,15 +30,15 @@ export function Header() {
   }
 
   return (
-    <header className="navbar bg-base-200 z-10">
+    <header className={styles.header}>
       <div className="flex-1">
-        <NavLink className="btn btn-ghost normal-case text-xl" to="/">
+        <NavLink className={styles.header__logo} to="/">
           <LogoTempSVG />
-          <span className="ml-1">{ShopData.name}</span>
+          <span className={styles.header__logo__name}>{ShopData.name}</span>
         </NavLink>
       </div>
       <div className="flex-none">
-        <NavLink className="btn btn-ghost btn-circle" to={EndPoints.Favorites}>
+        <NavLink className={styles.header__btn} to={EndPoints.Favorites}>
           <div className="indicator">
             <HeartSVG />
             <span className="badge badge-sm indicator-item">
@@ -47,7 +48,7 @@ export function Header() {
         </NavLink>
 
         <div className="dropdown dropdown-end">
-          <label tabIndex={1} className="btn btn-ghost btn-circle">
+          <label tabIndex={1} className={styles.header__btn}>
             <div className="indicator">
               <CartSVG />
               <span className="badge badge-sm indicator-item">{cartCount}</span>
@@ -77,10 +78,7 @@ export function Header() {
           </div>
         </div>
 
-        <button
-          className="btn btn-ghost btn-circle"
-          onClick={handleThemeChange}
-        >
+        <button className={styles.header__btn} onClick={handleThemeChange}>
           <ThemeToggleButtonSVG theme={theme} />
         </button>
       </div>

@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 
+import styles from "../../styles/ProductPreview.module.scss"
+
 type Props = {
   images: string[]
 }
@@ -24,29 +26,35 @@ export const ProductPreview = ({ images }: Props) => {
   }
 
   return (
-    <div className="flex w-full md:p-6 gap-4 min-h-[640px] max-h-[100vh]">
-      <div className=" md:w-[72px] md:visible overflow-y-auto overflow-x-hidden hidden md:flex md:flex-col gap-2">
+    <div className={styles["product-preview"]}>
+      <div className={styles["product-preview__side-slider"]}>
         {images?.map((img, index) => (
           <button key={img} onClick={() => handleSelect(index)}>
             <img
               src={img}
               alt={String(index)}
-              className="h-[92px] w-[70px] bg-base-300 rounded-lg object-cover"
-            ></img>
+              className={styles["product-preview__side-slider__img"]}
+            />
           </button>
         ))}
       </div>
-      <div className="w-full aspect-[3/4] bg-base-300 rounded-lg grid place-items-center relative">
+      <div className={styles["product-preview__active-img"]}>
         <img
-          className="h-full w-full object-cover rounded-lg"
+          className={styles["product-preview__active-img__img"]}
           src={images[activeImageIndex]}
-          alt=""
+          alt="Preview"
         />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <button onClick={handlePrev} className="btn btn-circle">
+        <div className={styles["product-preview__active-img__navigation"]}>
+          <button
+            onClick={handlePrev}
+            className={styles["product-preview__active-img__navigation_btn"]}
+          >
             ❮
           </button>
-          <button onClick={handleNext} className="btn btn-circle">
+          <button
+            onClick={handleNext}
+            className={styles["product-preview__active-img__navigation_btn"]}
+          >
             ❯
           </button>
         </div>

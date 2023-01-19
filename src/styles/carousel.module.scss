@@ -1,0 +1,7 @@
+.app-carousel {
+  @apply carousel gap-2 rounded-box;
+
+  &-item {
+    @apply carousel-item;
+  }
+}

@@ -3,6 +3,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 
 import { useGetAllCategoriesQuery } from "../../features/products/productsApi"
+import styles from "../../styles/carousel.module.scss"
 
 // export interface ICategoriesProps {}
 
@@ -18,11 +19,11 @@ export function CategoriesCarousel() {
   if (error) return <div>error</div>
 
   return (
-    <div className="carousel gap-2 rounded-box mt-40">
+    <div className={styles["app-carousel"] + " mt-40"}>
       {data?.map(
         (category) =>
           category.image && (
-            <div key={category.id} className="carousel-item">
+            <div key={category.id} className={styles["app-carousel-item"]}>
               <figure className="relative w-full">
                 <NavLink to={`/catalog?category=${category.id}`}>
                   <img

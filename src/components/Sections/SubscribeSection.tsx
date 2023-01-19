@@ -2,6 +2,8 @@ import React from "react"
 
 import { SubmitHandler, useForm } from "react-hook-form"
 
+import styles from "../../styles/SubscribeSection.module.scss"
+
 // import { SendEmail } from "../../utils/SendEmail"
 
 // export interface ISubscribeProps {}
@@ -27,7 +29,7 @@ export function SubscribeSection() {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid place-items-center gap-6 my-[80px] text-center"
+        className={styles["subscribe-section"]}
       >
         <h1 className="text-lg">Узнайте первым о новинках</h1>
         <input
@@ -40,17 +42,17 @@ export function SubscribeSection() {
             },
           })}
           placeholder="test@mail.com"
-          className="input input-bordered input-primary w-full max-w-[256px]"
+          className={styles["subscribe-section__input"]}
         />
         {errors?.email && (
           <p className="text-error text-xs">* {errors.email.message}</p>
         )}
         <div
-          className="tooltip text-justify text-sm"
+          className={styles["app-tooltip"]}
           data-tip="* Нажимая на кнопку «Подписаться», я соглашаюсь на обработку моих
           персональных данных и ознакомлен(а) с условиями конфиденциальности."
         >
-          <button type="submit" className="btn btn-wide btn-primary">
+          <button type="submit" className={styles["subscribe-section__btn"]}>
             Подписаться
           </button>
         </div>

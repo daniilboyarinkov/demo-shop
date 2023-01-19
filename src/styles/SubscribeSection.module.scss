@@ -1,0 +1,15 @@
+.subscribe-section {
+  @apply grid place-items-center gap-6 my-[80px] text-center;
+
+  &__input {
+    @apply input input-bordered input-primary w-full max-w-[256px];
+  }
+
+  &__btn {
+    @apply btn btn-wide btn-primary;
+  }
+}
+
+.app-tooltip {
+  @apply tooltip text-justify text-sm;
+}

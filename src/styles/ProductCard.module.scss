@@ -1,0 +1,29 @@
+.product-card {
+  grid-template-rows: auto 1fr auto;
+
+  @apply card bg-base-100 shadow-xl max-w-md;
+
+  &__gradient {
+    @apply absolute w-full h-full bg-gradient-to-b from-transparent via-transparent to-base-100;
+  }
+
+  &__img {
+    @apply h-full w-full object-cover rounded-lg;
+  }
+
+  &__like-btn {
+    @apply absolute top-0 right-0 btn btn-secondary rounded-none rounded-tr-lg rounded-bl-lg;
+  }
+
+  &__body {
+    @apply card-body;
+
+    &__title {
+      @apply card-title max-w-prose;
+    }
+
+    &__price {
+      @apply self-start;
+    }
+  }
+}

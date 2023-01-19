@@ -1,0 +1,5 @@
+.product-space {
+  grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
+
+  @apply pt-2 grid gap-10 md:px-10 place-items-center sm:place-content-center;
+}

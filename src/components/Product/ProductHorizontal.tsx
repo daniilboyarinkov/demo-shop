@@ -3,6 +3,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 
 import { IProduct } from "../../features/products/productsApi"
+import styles from "../../styles/ProductHorizontal.module.scss"
 import { TrashBinSVG } from "../../svg/TrashBinSVG"
 import { ConvertCurrency } from "../../utils/ConvertCurrency"
 
@@ -13,23 +14,23 @@ type Props = {
 
 export const ProductHorizontal = ({ product, handleDeleteProduct }: Props) => {
   return (
-    <div className="flex flex-col sm:flex-row sm:justify-between sm:max-h-[120px] border-b border-base-200 p-4 sm:w-5/6 md:w-3/4 self-center">
+    <div className={styles["products-horizontal"]}>
       <div className="flex justify-between pb-4 sm:pb-0 gap-4 sm:w-5/6">
-        <NavLink to={`/`}>
+        <NavLink to={`/catalog/${product.id}`}>
           <img
-            className="max-w-[95px] object-cover sm:self-center rounded"
+            className={styles["products-horizontal__img"]}
             src={product.images[0]}
             alt="preview"
           />
         </NavLink>
-        <p className="self-start sm:self-center">{product.title}</p>
+        <p className={styles["products-horizontal__title"]}>{product.title}</p>
 
-        <p className="font-bold self-end sm:self-center">
+        <p className={styles["products-horizontal__price"]}>
           {ConvertCurrency(product.price)}
         </p>
       </div>
       <button
-        className="btn sm:self-center"
+        className={styles["products-horizontal__btn"]}
         onClick={() => handleDeleteProduct(product)}
       >
         <TrashBinSVG />
