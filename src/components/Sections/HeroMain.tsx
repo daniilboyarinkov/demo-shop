@@ -13,10 +13,10 @@ const bgImg =
 export function HeroMain() {
   return (
     <div
-      className={`hero min-h-screen bg-[url('${bgImg}')]`}
-      // style={{
-      //   backgroundImage: `url("")`,
-      // }}
+      className={`hero`}
+      style={{
+        backgroundImage: `url('${bgImg}')`,
+      }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
